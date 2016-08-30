@@ -9,6 +9,10 @@ function myFunction() {
 //var theUrl = 'data/locations.json'
 
 //var url = 'https://docs.google.com/spreadsheets/d/14NrIk-FFVg0xoMcO81ga-7-7eHTkQDAjs__MiYl6SK8/pubhtml'
+//var url = 'https://docs.google.com/spreadsheets/d/
+
+//https://spreadsheets.google.com/feeds/list/14NrIk-FFVg0xoMcO81ga-7-7eHTkQDAjs__MiYl6SK8/od6/public/values?alt=json
+
 
 /*
 var request = new XMLHttpRequest();
@@ -62,7 +66,7 @@ function createCORSRequest(method, url) {
 
 function makeCorsRequest() {
     // This is a sample server that supports CORS.
-    var url = 'https://docs.google.com/spreadsheets/d/14NrIk-FFVg0xoMcO81ga-7-7eHTkQDAjs__MiYl6SK8/pub';
+    var url = 'https://spreadsheets.google.com/feeds/list/14NrIk-FFVg0xoMcO81ga-7-7eHTkQDAjs__MiYl6SK8/od6/public/values?alt=json';
 
     var xhr = createCORSRequest('GET', url);
     if (!xhr) {
