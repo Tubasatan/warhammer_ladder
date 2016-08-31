@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif');
+
+h1 {
+    color: black;
+    font-family: 'Droid Serif',serif;
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 0 0 24px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table {
+    color: #333;
+    font-family: 'Droid Serif', serif;
+    width: 640px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+td {
+    border: 1px solid transparent;
+    height: 30px;
+    transition: all 0.3s; /* simple transition for hover effect */
+    position: relative;
+}
+
+td {
+    background: #FAFAFA;
+    text-align: center;
+}
+
+
+
+
+/* cells in even rows are one color */
+tr:nth-child(even) td { background: #F1F1F1; }
+tr:nth-child(even) td:last-child { color: #F1F1F1; }
+
+/* cells in odd rows are onother color */
+tr:nth-child(odd) td { background: #FEFEFE; }
+tr:nth-child(odd) td:last-child { color: #FEFEFE; }
+
+tr td:last-child { text-align: right; color: #FEFEFE;}
+
+tr:hover td:last-child { color: black;}
+
+.progress {
+    margin: 0 auto 2rem auto;
+    padding: 0;
+    width: 640px;
+    height: 30px;
+    overflow: hidden;
+    background: #F1F1F1;
+    border-radius: 6px;
+}
+
+.meter {
+    position: relative;
+    float: left;
+    min-width: 1%;
+    height: 100%;
+}
+
+.percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-family: 'Droid Serif', serif;
+    font-size: 12px;
+    color: black;
+}
+
+.bars .progress:nth-child(odd) .meter { background: #595959; }
+.bars .progress:nth-child(even) .meter { background: #888; }
