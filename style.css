@@ -7,6 +7,7 @@ h1 {
     font-weight: 800;
     line-height: 72px;
     margin: 0 0 24px;
+    margin-top: 60px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -21,9 +22,19 @@ table {
     margin-right: auto;
 }
 
+td th {
+    border: 0;
+    height: 30px;
+}
+
+th {
+    /* Gradient Background */
+    background: linear-gradient(#333 0%,#444 100%);
+    color: #FFF; font-weight: bold;
+    height: 40px;
+}
 
 td {
-    border: 1px solid transparent;
     height: 30px;
     transition: all 0.3s; /* simple transition for hover effect */
     position: relative;
@@ -35,47 +46,25 @@ td {
 }
 
 
+/* Add border-radius to specific cells! */
+tr:first-child th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+tr:first-child th:last-child {
+    border-radius: 0 5px 0 0;
+}
 
 
 /* cells in even rows are one color */
 tr:nth-child(even) td { background: #F1F1F1; }
-tr:nth-child(even) td:last-child { color: #F1F1F1; }
 
 /* cells in odd rows are onother color */
 tr:nth-child(odd) td { background: #FEFEFE; }
-tr:nth-child(odd) td:last-child { color: #FEFEFE; }
 
-tr td:last-child { text-align: right; color: #FEFEFE;}
 
-tr:hover td:last-child { color: black;}
-
-.progress {
-    margin: 0 auto 2rem auto;
-    padding: 0;
-    width: 640px;
-    height: 30px;
-    overflow: hidden;
-    background: #F1F1F1;
-    border-radius: 6px;
+body {
+    background:url('images/background.png')  no-repeat;
+    background-attachment:fixed;
+    background-position: center top 156px ;
 }
-
-.meter {
-    position: relative;
-    float: left;
-    min-width: 1%;
-    height: 100%;
-}
-
-.percent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    font-family: 'Droid Serif', serif;
-    font-size: 12px;
-    color: black;
-}
-
-.bars .progress:nth-child(odd) .meter { background: #595959; }
-.bars .progress:nth-child(even) .meter { background: #888; }

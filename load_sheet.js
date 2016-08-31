@@ -22,10 +22,7 @@ function createCORSRequest(method, url) {
     return xhr;
 }
 
-
-function makeCorsRequest() {
-    // This is a sample server that supports CORS.
-    var url = 'https://spreadsheets.google.com/feeds/list/14NrIk-FFVg0xoMcO81ga-7-7eHTkQDAjs__MiYl6SK8/od6/public/values?alt=json';
+function makeCorsRequest(url) {
 
     var xhr = createCORSRequest('GET', url);
     if (!xhr) {
@@ -40,8 +37,8 @@ function makeCorsRequest() {
         var table = buildTable(tableData);
         document.getElementById('scoreboard').appendChild(table)
 
-        var bars = buildBars(tableData);
-        document.getElementById('bars').appendChild(bars);
+        //var bars = buildBars(tableData);
+        //document.getElementById('bars').appendChild(bars);
 
     };
 
@@ -54,8 +51,8 @@ function makeCorsRequest() {
 }
 
 function getTableData(data) {
-    ///console.log(data);
-    //console.log(data.feed.entry);
+    console.log(data);
+    console.log(data.feed.entry);
     var entries = data.feed.entry;
 
     var tableData = [];
@@ -91,6 +88,27 @@ function buildTable(tableData) {
     //tableData = [['john','10'],['jenny','19']]
     // Create the table
     var table = document.createElement('table');
+
+    // create the haeaders for the table
+    var tr = document.createElement('tr');
+    var th1 = document.createElement('th');
+    var th2 = document.createElement('th');
+    var th3 = document.createElement('th');
+
+    var header1 = document.createTextNode('Placement');
+    var header2 = document.createTextNode('General');
+    var header3 = document.createTextNode('Total Score');
+
+    th1.appendChild(header1);
+    th2.appendChild(header2);
+    th3.appendChild(header3);
+
+    tr.appendChild(th1);
+    tr.appendChild(th2);
+    tr.appendChild(th3);
+
+    table.appendChild(tr);
+
     // fill the table with content
     for (var i = 0; i < tableData.length; i++) {
         var tr = document.createElement('tr');
@@ -99,7 +117,7 @@ function buildTable(tableData) {
         var td2 = document.createElement('td');
         var td3 = document.createElement('td');
 
-        var text1 = document.createTextNode(i+1);
+        var text1 = document.createTextNode('#' + (i + 1));
         var text2 = document.createTextNode(tableData[i][0]);
         var text3 = document.createTextNode(tableData[i][1]);
 
@@ -119,38 +137,5 @@ function buildTable(tableData) {
     return table;
 }
 
-function buildBars(data) {
-
-    // data should already be sorted so the first number value is the highest
-
-    var maxValue = data[0][1];
-
-    var bars = document.createElement('div');
-    bars.className = 'bars';
-
-    for (var i = 0; i < data.length; i++) {
-        var percentage = (data[i][1] / maxValue) * 100;
-
-        var bar = document.createElement('div');
-        bar.className = 'progress';
-
-        var span = document.createElement('span');
-        span.className = 'meter';
-        // the highest ranked is 100% the rest are fractions of that number
-        span.style.width = percentage + '%';
-
-        var p = document.createElement('p');
-        p.className = 'percent';
-        // write the name and the score instead of a percentage
-        p.innerHTML = data[i].join(' ');
-
-        bars.appendChild(bar);
-        bar.appendChild(span);
-        span.appendChild(p);
-
-    }
-
-    return bars;
-}
-
-makeCorsRequest();
+var url = 'https://spreadsheets.google.com/feeds/list/14NrIk-FFVg0xoMcO81ga-7-7eHTkQDAjs__MiYl6SK8/od6/public/values?alt=json';
+makeCorsRequest(url);
